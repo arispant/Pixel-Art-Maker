@@ -9,12 +9,15 @@ let inputWeight = document.getElementById('inputWeight');
 let btn = document.querySelector('input[type="submit"]');
 btn.addEventListener('click', makeGrid);
 
+//Selecting html table for adding content
+let table = document.getElementById('pixelCanvas');
+
 function makeGrid(event) {
+  //clear table
+  table.innerHTML = "";
+
   //preventing the default event(table disappears immediately)
   event.preventDefault();
-
-  //Selecting html table for adding content
-  let table = document.getElementById('pixelCanvas');
 
   //Nested for loop to create elements for pixelCanvas
   for (let i = 0; i < inputHeight.value; i++) {
@@ -28,11 +31,7 @@ function makeGrid(event) {
 
   //Function for respond to click, if td has color it will remove it.
   function respondToTheClick(evt) {
-     if(evt.target.style.backgroundColor == ''){
-         evt.target.style.backgroundColor = color.value;
-     } else {
-         evt.target.style.backgroundColor = '';
-     }
+      evt.target.style.backgroundColor = color.value;
   }
 
   //Creating the event listener
